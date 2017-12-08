@@ -1,0 +1,32 @@
+{
+  "name": "f",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www --exec babel-node",
+    "dev": "node src/index.js"
+  },
+  "dependencies": {
+    "debug": "^2.6.3",
+    "koa": "^2.2.0",
+    "koa-bodyparser": "^3.2.0",
+    "koa-convert": "^1.2.0",
+    "koa-json": "^2.0.2",
+    "koa-logger": "^2.0.1",
+    "koa-onerror": "^1.2.1",
+    "koa-router": "^7.1.1",
+    "koa-static": "^3.0.0",
+    "koa-views": "^5.2.1",
+    "pug": "^2.0.0-rc.1"
+  },
+  "devDependencies": {
+    "babel-plugin-import": "^1.6.2",
+    "babel-plugin-transform-async-to-generator": "^6.24.1",
+    "babel-plugin-transform-runtime": "^6.23.0",
+    "babel-preset-env": "^1.6.1",
+    "babel-preset-stage-0": "^6.24.1",
+    "babel-preset-stage-3": "^6.24.1",
+    "nodemon": "^1.12.5",
+    "transform-runtime": "0.0.0"
+  }
+}
