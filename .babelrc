@@ -3,5 +3,8 @@
     "env",
     "stage-0"
   ],
-  "plugins": ["transform-runtime", "transform-async-to-generator"]
+  "plugins": [
+    "transform-runtime", 
+    "transform-async-to-generator"
+  ]
 }
