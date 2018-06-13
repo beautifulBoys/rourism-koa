@@ -4,7 +4,7 @@
  * Module dependencies.
  */
 
-var app = require('./app.js');
+var app = require('./app');
 var debug = require('debug')('demo:server');
 var http = require('http');
 
@@ -83,6 +83,7 @@ function onError(error) {
 
 function onListening() {
   var addr = server.address();
+  console.log('服务启动： http://localhost:' + port);
   var bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;

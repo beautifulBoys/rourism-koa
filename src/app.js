@@ -1,37 +1,37 @@
 
-import Koa from 'koa';
-import json from 'koa-json';
-import onerror from 'koa-onerror';
-import bodyparser from 'koa-bodyparser';
-import logger from 'koa-logger';
-import KoaStatic from 'koa-static';
-import fs from 'fs';
-import path from 'path';
+const Koa = require('koa')
+const app = new Koa()
+const json = require('koa-json')
+const onerror = require('koa-onerror')
+const bodyparser = require('koa-bodyparser')
+const logger = require('koa-logger')
+const KoaStatic = require('koa-static')
 
-import router from './routes/index.js';
-import dbconnect from './config/db.js';
-
-const app = new Koa();
-
+const router = require('../routes/index')
 // error handler
-onerror(app);
-
-// db 数据库
-dbconnect();
+onerror(app)
 
 // middlewares
 app.use(bodyparser({
   enableTypes:['json', 'form', 'text']
-}));
-app.use(logger());
-app.use(json());
-app.use(KoaStatic(path.join(__dirname, '../public')));
+}))
+app.use(json())
+app.use(logger())
+app.use(KoaStatic(__dirname + '../public'))
+// logger
+app.use(async (ctx, next) => {
+  let start = new Date()
+  await next()
+  let ms = new Date() - start
+  console.log(`${ctx.method} ${ctx.url} - ${ms}ms`)
+})
+
 // routes
-router(app);
+router(app)
 
 // error-handling
 app.on('error', (err, ctx) => {
-  console.error('server error', err, ctx);
+  console.error('server error', err, ctx)
 });
 
-module.exports = app;
+module.exports = app
